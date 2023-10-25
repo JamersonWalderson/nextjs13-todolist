@@ -64,6 +64,7 @@ export default function Home() {
                 value={updateText}
                 onChange={(e) => setUpdateText(e.target.value)}
                 placeholder="New Text"
+                className="text-blue-500"
               />
               <button
                 className="bg-blue-800"
