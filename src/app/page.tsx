@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function Home() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
+  const [updateText, setUpdateText] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,10 +26,13 @@ export default function Home() {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  const updateTodo = (id, newText) => {
+  const updateTodo = (id) => {
     setTodos(
-      todos.map((todo) => (todo.id === id ? { ...todo, text: newText } : todo))
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, text: updateText } : todo
+      )
     );
+    setUpdateText("");
   };
 
   return (
@@ -55,9 +59,15 @@ export default function Home() {
               >
                 Delete
               </button>
+              <input
+                type="text"
+                value={updateText}
+                onChange={(e) => setUpdateText(e.target.value)}
+                placeholder="New Text"
+              />
               <button
                 className="bg-blue-800"
-                onClick={() => updateTodo(item.id, "New Text")}
+                onClick={() => updateTodo(item.id)}
               >
                 Update
               </button>
