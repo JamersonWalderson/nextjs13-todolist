@@ -45,11 +45,14 @@ export default function Home() {
           />
           <button type="submit">Add</button>
         </form>
-        <div>
+        <div className="">
           {todos.map((item) => (
             <div key={item.id} className="flex flex-row gap-5 ">
-              <p>{item.text}</p>
-              <button className="bg-red" onClick={() => deleteTodo(item.id)}>
+              <p>- {item.text}</p>
+              <button
+                className="bg-red-800"
+                onClick={() => deleteTodo(item.id)}
+              >
                 Delete
               </button>
               <button
